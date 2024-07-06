@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,23 +21,17 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Minify CSS and JS
-      run: npm run build
+    - name: Minify and uglify CSS and JS
+      run: |
+        mkdir -p build/dist/js
+        npm run minify-js
+        mkdir -p build/dist/css
+        npm run minify-css
 
-    - name: Install Wrangler
-      run: npm install -g @cloudflare/wrangler
-
-    - name: Configure Wrangler with Cloudflare API token
-      run: echo "CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}" >> $GITHUB_ENV
+    - name: Verify minified files
+      run: ls -R build/dist
 
     - name: Deploy to Cloudflare
-      run: |
-        wrangler publish
+      run: npx wrangler publish
       env:
         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-    - name: Verify uploaded files
-      run: |
-        echo "Checking accessibility of the minified files"
-        curl -I "https://test-new-dkw.pages.dev/css/style.min.css"
-        curl -I "https://test-new-dkw.pages.dev/js/scripts.min.js"
