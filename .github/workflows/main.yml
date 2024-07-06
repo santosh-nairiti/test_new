@@ -23,6 +23,10 @@ jobs:
 
     - name: Build project
       run: npm run build
+      
+    - name: Copy files to repository
+      run: |
+        cp -r build/dist/* .
 
     - name: Deploy to Cloudflare
       run: npx wrangler publish
