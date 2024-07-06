@@ -1,11 +1,13 @@
 {
-    "scripts": {
-    "minify-css": "mkdir -p build/dist/css && npx uglifycss src/css/style.css > build/dist/css/style.min.css",
-    "minify-js": "mkdir -p build/dist/js && npx uglifyjs src/js/scripts.js -o build/dist/js/scripts.min.js",
+  "name": "test_new",
+  "version": "1.0.0",
+  "scripts": {
+    "minify-css": "mkdir -p build/dist/css && npx uglifycss build/src/css/style.css > build/dist/css/style.min.css",
+    "minify-js": "mkdir -p build/dist/js && npx uglifyjs build/src/js/scripts.js -o build/dist/js/scripts.min.js",
     "build": "npm run minify-css && npm run minify-js"
-    },
-    "devDependencies": {
-        "uglify-js": "^3.14.5",
-        "clean-css-cli": "^5.3.2"
-    }
+  },
+  "devDependencies": {
+    "uglify-js": "^3.14.5",
+    "uglifycss": "^0.0.29"
+  }
 }
