@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "minify-js": "uglifyjs build/src/js/*.js -o build/dist/js/app.min.js",
-    "minify-css": "cleancss build/src/css/*.css -o build/dist/css/style.min.css"
+    "minify-js": "mkdir -p build/dist/js && npx uglifyjs build/src/js/*.js -o build/dist/js/scripts.min.js",
+    "minify-css": "mkdir -p build/dist/css && npx cleancss build/src/css/*.css -o build/dist/css/style.min.css",
+    "build": "npm run minify-js && npm run minify-css"
   },
   "devDependencies": {
     "uglify-js": "^3.14.5",
