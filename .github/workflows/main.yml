@@ -21,8 +21,6 @@ jobs:
     - name: Install dependencies
       run: npm install
       
-    - name: Install Dependencies v2
-      run: npm install -g @cloudflare/workers-kv
     
     - name: Build project
       run: npm run build
