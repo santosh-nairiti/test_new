@@ -1,19 +1,12 @@
-name = "demo"
+name = "test_new"
 type = "webpack"
 account_id = "2c2eae7c46fdef478ca007471a296695"
 workers_dev = true
 zone_id = "fec2bdb9b6cb3f5f0de71ec2208c999c"
-route = "https://demo-bf3.pages.dev/*"
+route = "https://test-new-dkw.pages.dev/*"
 compatibility_date = "2024-07-05"
 
 [site]
-bucket = "./dist"
+bucket = "./build/dist"
 entry-point = "workers-site"
 
-[[site.files]]
-  match = "dist/**/*.css"
-  content_type = "text/css"
-
-[[site.files]]
-  match = "dist/**/*.js"
-  content_type = "text/javascript"
