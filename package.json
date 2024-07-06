@@ -1,7 +1,7 @@
 {
     "scripts": {
-        "minify-js": "uglifyjs src/js/*.js -o dist/js/app.min.js",
-        "minify-css": "cleancss src/css/*.css -o dist/css/style.min.css"
+    "minify-css": "mkdir -p build/dist/css && npx uglifycss src/css/style.css > build/dist/css/style.min.css",
+    "minify-js": "mkdir -p build/dist/js && npx uglifyjs src/js/scripts.js -o build/dist/js/scripts.min.js",
     },
     "devDependencies": {
         "uglify-js": "^3.14.5",
