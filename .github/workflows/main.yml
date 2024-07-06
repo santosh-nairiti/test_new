@@ -21,15 +21,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Minify and uglify CSS and JS
-      run: |
-        mkdir -p build/dist/js
-        npm run minify-js
-        mkdir -p build/dist/css
-        npm run minify-css
-
-    - name: Verify minified files
-      run: ls -R build/dist
+    - name: Build project
+      run: npm run build
 
     - name: Deploy to Cloudflare
       run: npx wrangler publish
