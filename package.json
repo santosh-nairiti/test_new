@@ -2,8 +2,8 @@
   "scripts": {
     "minify-js": "mkdir -p build/dist/js && npx uglifyjs build/src/js/*.js -o build/dist/js/scripts.min.js",
     "minify-css": "mkdir -p build/dist/css && npx cleancss build/src/css/*.css -o build/dist/css/style.min.css",
-    "copy-to-repo": "cp -r build/dist/* .",
-    "build": "npm run minify-js && npm run minify-css && npm run copy-to-repo"
+    "build": "npm run minify-js && npm run minify-css && npm run copy-to-repo",
+        "copy-to-repo": "cp -r build/dist/* ."
   },
   "devDependencies": {
     "uglify-js": "^3.14.5",
