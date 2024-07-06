@@ -3,8 +3,8 @@ addEventListener('fetch', event => {
 })
 
 async function handleRequest(request) {
-  // Replace 'YOUR_NAMESPACE_ID' with your actual Workers KV namespace ID
-  const myKVNamespace = await KV.get('b46b49b26e5b4fc09913fd35b61ccb46')
+  // Replace 'b46b49b26e5b4fc09913fd35b61ccb46' with your actual Workers KV namespace ID
+  const myKVNamespace = await KV.get('b46b49b26e5b4fc09913fd35b61ccb46');
   
   // Determine which file to fetch based on request path
   let key, contentType;
@@ -20,12 +20,12 @@ async function handleRequest(request) {
   }
   
   // Fetch the value from KV store
-  const value = await myKVNamespace.get(key, 'text')
+  const value = await myKVNamespace.get(key, 'text');
   
   // Return the response with the content and appropriate headers
   return new Response(value, {
     headers: {
       'Content-Type': contentType,
     },
-  })
+  });
 }
