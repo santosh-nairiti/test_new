@@ -3,7 +3,7 @@ type = "webpack"
 account_id = "2c2eae7c46fdef478ca007471a296695"
 workers_dev = true
 zone_id = "fec2bdb9b6cb3f5f0de71ec2208c999c"
-route = "https://test-new-dkw.pages.dev/*"
+route = "https://test-new.santosh-2c2.workers.dev/*"
 compatibility_date = "2024-07-05"
 
 [site]
