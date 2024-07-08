@@ -1,4 +1,4 @@
-name = "test_new"
+name = "test-new"
 type = "webpack"
 account_id = "2c2eae7c46fdef478ca007471a296695"
 workers_dev = true
@@ -14,3 +14,8 @@ kv_namespaces = [
 bucket = "./build/dist"
 entry-point = "workers-site"
 
+[build]
+# Define custom headers for specific file types
+[[build.headers]]
+match = "*.css"
+headers = { Content-Type = "text/css" }
