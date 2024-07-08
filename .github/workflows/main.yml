@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -10,26 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.13.1'
 
-    - name: Install dependencies
-      run: npm install
-      
-    
-    - name: Build project
-      run: npm run build
-      
-    - name: Copy files to repository
-      run: |
-        cp -r build/dist/* .
+      - name: Install dependencies
+        run: npm install
 
-    - name: Deploy to Cloudflare
-      run: npx wrangler publish
-      env:
-        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Build project
+        run: npm run build
+
+      - name: Minify CSS
+        run: npm run minify-css
+
+      - name: Uglify JS
+        run: npm run uglify-js
+
+      - name: Gzip files
+        run: npm run gzip
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+          directory: ./dist
