@@ -3,11 +3,6 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches:
-      - mainname: Deploy to Cloudflare Pages
-
-on:
-  push:
-    branches:
       - main
 
 jobs:
