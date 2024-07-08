@@ -30,3 +30,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           directory: ./build/dist
+          projectName: test_new  # Replace with your actual Cloudflare Pages project name
