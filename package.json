@@ -1,12 +1,15 @@
 {
   "scripts": {
-    "minify-js": "mkdir -p build/dist/js && npx uglifyjs build/src/js/*.js -o build/dist/js/scripts.min.js",
-    "minify-css": "mkdir -p build/dist/css && npx cleancss build/src/css/*.css -o build/dist/css/style.min.css",
-    "build": "npm run minify-js && npm run minify-css && npm run copy-to-repo",
-        "copy-to-repo": "cp -r build/dist/* ."
+    "build": "gulp build",
+    "minify-css": "gulp minify-css",
+    "uglify-js": "gulp uglify-js",
+    "gzip": "gulp gzip",
+    "deploy": "wrangler publish"
   },
   "devDependencies": {
-    "uglify-js": "^3.14.5",
-    "clean-css-cli": "^5.3.2"
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-gzip": "^1.4.2"
   }
 }
