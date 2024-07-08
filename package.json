@@ -1,12 +1,10 @@
 {
   "scripts": {
-    "minify-js": "mkdir -p build/dist/js && npx uglify-js src/js/*.js -o build/dist/js/scripts.min.js",
-    "minify-css": "mkdir -p build/dist/css && npx cleancss src/css/*.css -o build/dist/css/style.min.css",
-    "minify-html": "mkdir -p build/dist && npx html-minifier-terser --input-dir src --output-dir build/dist --collapse-whitespace --remove-comments --minify-css true --minify-js true",
+    "minify-js": "mkdir -p build/dist/js && npx uglify-js build/src/js/*.js -o build/dist/js/scripts.min.js",
+    "minify-css": "mkdir -p build/dist/css && npx cleancss build/src/css/*.css -o build/dist/css/style.min.css",
     "gzip-js": "npx gzip-cli build/dist/js/scripts.min.js -o build/dist/js/scripts.min.js.gz",
     "gzip-css": "npx gzip-cli build/dist/css/style.min.css -o build/dist/css/style.min.css.gz",
-    "gzip-html": "npx gzip-cli build/dist/*.html -o build/dist/*.html.gz",
-    "build": "npm run minify-js && npm run minify-css && npm run minify-html && npm run gzip-js && npm run gzip-css && npm run gzip-html && npm run copy-to-repo",
+    "build": "npm run minify-js && npm run minify-css && npm run gzip-js && npm run gzip-css && npm run copy-to-repo",
     "copy-to-repo": "cp -r build/dist/* ."
   },
   "devDependencies": {
